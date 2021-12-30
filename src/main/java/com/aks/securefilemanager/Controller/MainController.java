@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class HelloController {
+public class MainController {
 
     @FXML
     private HTMLEditor htmlEditor;
