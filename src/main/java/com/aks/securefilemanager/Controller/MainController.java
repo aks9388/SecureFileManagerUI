@@ -86,8 +86,9 @@ public class MainController implements Initializable {
     @FXML
     protected void onSelectItem(){
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+
         if(selectedItem != null){
-            System.out.println(selectedItem.getValue());
+            System.out.println(selectedItem.getValue() +" selected");
         }
     }
 }
