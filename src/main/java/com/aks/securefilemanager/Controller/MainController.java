@@ -1,18 +1,36 @@
 package com.aks.securefilemanager.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
 
     @FXML
     private HTMLEditor htmlEditor;
+    @FXML
+    private TreeView treeView;
+
     private String filePath = null;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TreeItem<String> rootItem = new TreeItem<>("Files");
+        TreeItem<String> dummyItem = new TreeItem<>("Folder1");
+        TreeItem<String> dummyItem1 = new TreeItem<>("File1");
+        dummyItem.getChildren().add(dummyItem1);
+        rootItem.getChildren().add(dummyItem);
+        treeView.setRoot(rootItem);
+
+    }
     @FXML
     protected void saveFile(){
         if(filePath==null) {
@@ -64,6 +82,12 @@ public class MainController {
         } finally {
             is.close();
         }
-
+    }
+    @FXML
+    protected void onSelectItem(){
+        TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem != null){
+            System.out.println(selectedItem.getValue());
+        }
     }
 }
