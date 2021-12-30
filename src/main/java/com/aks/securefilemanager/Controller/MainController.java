@@ -88,7 +88,7 @@ public class MainController implements Initializable {
         TreeItem<String> selectedItem = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
 
         if(selectedItem != null){
-            System.out.println(selectedItem.getValue() +" selected");
+            System.out.println(selectedItem.getValue() +" selected.");
         }
     }
 }
